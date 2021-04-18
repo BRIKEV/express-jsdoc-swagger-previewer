@@ -15,9 +15,10 @@ export default {
       type: Object,
     },
   },
-  mounted() {
-    const { swaggerObject: spec } = this;
-    SwaggerUI({ spec, dom_id: '#swagger-ui' });
+  watch: {
+    swaggerObject(spec) {
+      if (spec) SwaggerUI({ spec, dom_id: '#swagger-ui' });
+    },
   },
 };
 </script>
