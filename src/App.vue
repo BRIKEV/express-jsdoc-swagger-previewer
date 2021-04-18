@@ -1,8 +1,10 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="nav">
+       <img class="brand" src="./assets/images/brand.jpeg" alt="logo" />
+       <button class="nav-button">
+         Run
+       </button>
     </div>
     <router-view/>
   </div>
@@ -17,16 +19,26 @@
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  border-bottom: 1px solid #DCDCDC;
 }
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.brand {
+  height: 40px;
 }
+.nav-button {
+  cursor: pointer;
+  background: transparent;
+  padding: 15px 7px;
+  border-radius: 0.25rem;
+  border: 1px solid #DCDCDC;
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+}
+.nav-button:hover {
+    background: #606060;
+    color: #ffF;
 }
 </style>
