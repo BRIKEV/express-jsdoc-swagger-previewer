@@ -6,6 +6,7 @@
         <CodeMirror v-model="code" />
       </div>
       <SwaggerUi :swaggerObject="testing" />
+      <!-- TODO: Information banner and loading -->
      </div>
   </div>
 </template>
@@ -21,7 +22,7 @@ export default {
   data() {
     return {
       code: '',
-      testing: undefined,
+      testing: {},
     };
   },
   methods: {
