@@ -1,7 +1,7 @@
 <template>
   <div class="nav">
     <img class="brand" src="../assets/images/brand.jpeg" alt="logo" />
-    <button class="nav-button" @click="handleClick">
+    <button class="nav-button" @click="handleClick" data-cy="nav-button">
       Run
     </button>
   </div>

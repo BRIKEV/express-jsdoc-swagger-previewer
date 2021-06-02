@@ -2,7 +2,7 @@
   <div class="home">
      <Navbar @onClick="handleClickRun" />
      <div class="Content">
-      <div class="codemirror">
+      <div class="codemirror" data-cy="codemirror">
         <CodeMirror v-model="code" />
       </div>
       <SwaggerUi :swaggerObject="testing" />

@@ -2,6 +2,7 @@
     <div
       id="swagger-ui"
       class="Swagger"
+      data-cy="swagger-ui"
     />
 </template>
 
