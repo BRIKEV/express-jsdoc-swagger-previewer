@@ -1,4 +1,8 @@
 describe('Main view', () => {
+  beforeEach(() => {
+    cy.server();
+    cy.route('POST', '/api/v1/process-openapi', 'fixture:openapi').as('processOpenapi');
+  });
   it('validate home page renders and we can type', () => {
     cy.visit('/');
     cy.get('[data-cy=nav-button]').should('be.visible');
@@ -8,5 +12,10 @@ describe('Main view', () => {
  * GET /api/v1
 * @summary
 */`);
+  });
+  it('validate process openapi request', () => {
+    cy.get('[data-cy=nav-button]').click();
+    cy.wait('@processOpenapi');
+    cy.get('.swagger-ui').should('be.visible');
   });
 });

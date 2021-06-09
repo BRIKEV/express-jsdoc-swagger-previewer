@@ -29,10 +29,7 @@ export default {
     handleClickRun() {
       const { code: payload } = this;
       processOpenapi({ payload })
-        .then((res) => {
-          console.log(res);
-          this.testing = res.body;
-        })
+        .then(({ data }) => { this.testing = data; })
         .catch(console.err);
     },
   },
