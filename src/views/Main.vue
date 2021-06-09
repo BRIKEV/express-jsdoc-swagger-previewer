@@ -15,7 +15,7 @@
 import Navbar from '@/components/Navbar.vue';
 import SwaggerUi from '@/components/SwaggerUi.vue';
 import CodeMirror from '@/components/CodeMirror.vue';
-import testing from './testing';
+import { processOpenapi } from '@/api';
 
 export default {
   components: { Navbar, SwaggerUi, CodeMirror },
@@ -27,8 +27,13 @@ export default {
   },
   methods: {
     handleClickRun() {
-      // TODO: backend api call
-      this.testing = testing;
+      const { code: payload } = this;
+      processOpenapi({ payload })
+        .then((res) => {
+          console.log(res);
+          this.testing = res.body;
+        })
+        .catch(console.err);
     },
   },
 };
