@@ -7,11 +7,16 @@
     "build": "vue-cli-service build",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
+    "start": "NODE_ENV=production node server.js",
+    "heroku-postbuild": "npm run build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "compression": "^1.7.4",
     "core-js": "^3.10.0",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
     "swagger-ui": "^3.46.0",
     "vue": "^2.6.12",
     "vue-codemirror": "^4.0.6",
