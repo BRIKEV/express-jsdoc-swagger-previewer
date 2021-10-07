@@ -1,6 +1,11 @@
 <template>
   <div id="app">
     <router-view />
+    <notifications
+      group="notify"
+      position="bottom right"
+      :closeOnClick="false"
+    />
   </div>
 </template>
 

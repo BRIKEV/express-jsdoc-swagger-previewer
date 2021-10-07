@@ -30,7 +30,13 @@ export default {
       const { code: payload } = this;
       processOpenapi({ payload })
         .then(({ data }) => { this.testing = data; })
-        .catch(console.err);
+        .catch((error) => {
+          this.$notify({
+            group: 'notify',
+            text: error.message,
+            type: 'error',
+          });
+        });
     },
   },
 };
