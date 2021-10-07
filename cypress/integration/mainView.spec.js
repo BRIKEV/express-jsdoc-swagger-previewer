@@ -12,7 +12,7 @@ describe('Main view', () => {
 * @summary
 */`);
   });
-  it.skip('validate process openapi request', () => {
+  it('validate process openapi request', () => {
     cy.get('[data-cy=nav-button]').click();
     cy.wait('@processOpenapi');
     cy.get('.swagger-ui').should('be.visible');
