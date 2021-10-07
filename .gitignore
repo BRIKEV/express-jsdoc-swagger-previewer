@@ -3,6 +3,7 @@ node_modules
 /dist
 
 screenshots
+videos
 
 # local env files
 .env
