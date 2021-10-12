@@ -5,7 +5,7 @@
       <div class="codemirror" data-cy="codemirror">
         <CodeMirror v-model="code" />
       </div>
-      <SwaggerUi :swaggerObject="testing" />
+      <SwaggerUi :swaggerObject="swaggerData" />
       <!-- TODO: Information banner and loading -->
      </div>
   </div>
@@ -22,15 +22,21 @@ export default {
   data() {
     return {
       code: '',
-      testing: {},
+      swaggerData: {},
     };
   },
   methods: {
     handleClickRun() {
       const { code: payload } = this;
       processOpenapi({ payload })
-        .then(({ data }) => { this.testing = data; })
-        .catch(console.err);
+        .then(({ data }) => { this.swaggerData = data; })
+        .catch((error) => {
+          this.$notify({
+            group: 'notify',
+            text: error.message,
+            type: 'error',
+          });
+        });
     },
   },
 };
