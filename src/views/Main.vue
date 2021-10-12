@@ -1,6 +1,16 @@
 <template>
   <div class="home">
-     <Navbar @onClick="handleClickRun" />
+     <Navbar @onClick="handleClickRun">
+      <VueMultiselect
+        v-model="selected"
+        track-by="name"
+        label="name"
+        :options="options"
+        :show-labels="false"
+        @input="handleSelectExample"
+        placeholder="Select example"
+      />
+     </Navbar>
      <div class="Content">
       <div class="codemirror" data-cy="codemirror">
         <CodeMirror v-model="code" />
@@ -16,6 +26,7 @@ import Navbar from '@/components/Navbar.vue';
 import SwaggerUi from '@/components/SwaggerUi.vue';
 import CodeMirror from '@/components/CodeMirror.vue';
 import { processOpenapi } from '@/api';
+import EXAMPLES from '@/schemas';
 
 export default {
   components: { Navbar, SwaggerUi, CodeMirror },
@@ -23,6 +34,15 @@ export default {
     return {
       code: '',
       swaggerData: {},
+      selected: '',
+      options: [
+        { name: 'Components', value: EXAMPLES.COMPONENTS },
+        { name: 'Responses', value: EXAMPLES.RESPONSES },
+        { name: 'Request body', value: EXAMPLES.REQUEST_BODY },
+        { name: 'Parameters', value: EXAMPLES.PARAMETERS },
+        { name: 'Example', value: EXAMPLES.EXAMPLE },
+        { name: 'Tag', value: EXAMPLES.TAG },
+      ],
     };
   },
   methods: {
@@ -38,6 +58,9 @@ export default {
           });
         });
     },
+    handleSelectExample(selected) {
+      this.code = selected ? selected.value : '';
+    },
   },
 };
 </script>
@@ -48,6 +71,19 @@ export default {
 }
 .codemirror {
   width: 50%;
+}
+
+.multiselect ::v-deep .multiselect__element .multiselect__option:hover {
+  background: #A0A0A0;
+}
+
+.multiselect ::v-deep .multiselect__element .multiselect__option--highlight {
+  background: #A0A0A0;
+}
+
+.multiselect ::v-deep .multiselect__element .multiselect__option--selected {
+  background: #666666;
+  color: #FFF;
 }
 
 .home {
