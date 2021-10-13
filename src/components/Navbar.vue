@@ -1,6 +1,9 @@
 <template>
   <div class="nav">
+    <div class="nav-left">
     <img class="brand" src="../assets/images/brand.jpeg" alt="logo" />
+      <slot />
+    </div>
     <button class="nav-button" @click="handleClick" data-cy="nav-button">
       Run
     </button>
@@ -25,6 +28,10 @@ export default {
   justify-content: space-between;
   padding: 10px 15px;
   border-bottom: 1px solid #DCDCDC;
+}
+.nav .nav-left {
+  display: flex;
+  align-items: center;
 }
 .brand {
   height: 40px;
